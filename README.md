@@ -3,12 +3,12 @@
 한국 시니어를 위해 만든 **눈이 편안하고, 성취감 있고, 중독성 있는** 모바일 웹 게임 모음입니다.
 설치 없이 브라우저에서 바로 실행되며, 인터넷 연결 없이도 작동합니다.
 
-## 🎮 수록 게임
+## 🎮 수록 게임 (탭하면 바로 실행됩니다)
 
 | 게임 | 설명 | 장르 |
 |---|---|---|
-| [🪨 속담 징검다리](./proverb-stepping-stones/) | 속담 빈칸을 채워 징검다리를 건너 고향까지! 속담·사자성어 100문항 | 지식 퀴즈 |
-| [🏯 두뇌 장원급제](./brain-jangwon/) | 조선 라이벌 8인과 60초 실시간 점수 대결! 암산·기억력·한자·눈썰미 | 두뇌 대결 |
+| [▶️ 속담 징검다리 실행하기](https://htmlpreview.github.io/?https://raw.githubusercontent.com/lgw7126/senior-brain-games/main/index.html) | 속담 빈칸을 채워 징검다리를 건너 고향까지! 속담·사자성어 100문항 | 지식 퀴즈 |
+| [▶️ 두뇌 장원급제 실행하기](https://htmlpreview.github.io/?https://raw.githubusercontent.com/lgw7126/senior-brain-games/main/brain-jangwon.html) | 조선 라이벌 8인과 60초 실시간 점수 대결! 암산·기억력·한자·눈썰미 | 두뇌 대결 |
 
 ## 👵 공통 설계 원칙
 
