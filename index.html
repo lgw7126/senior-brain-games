@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>두뇌 장원급제 · 조선 최고 두뇌를 가려라</title>
+<title>속담 징검다리 · 고향 가는 길</title>
 <style>
 :root{
-  --paper:#F3EBDD; --ink:#3A2E25; --pine:#4E6B51; --persimmon:#C2552B;
-  --soft:#E7DCC8; --gold:#D9A02B; --navy:#3E4C6E;
+  --paper:#F3EBDD; --ink:#3A2E25; --water:#9DBBB2; --water-deep:#7FA59A;
+  --stone:#B7AA97; --persimmon:#C2552B; --pine:#4E6B51; --soft:#E7DCC8; --gold:#D9A02B;
 }
 *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
 body{
   margin:0; min-height:100vh; background:var(--paper); color:var(--ink);
   font-family:'Gowun Batang','Noto Serif KR','Apple SD Gothic Neo','Malgun Gothic',serif;
-  display:flex; flex-direction:column; align-items:center; padding:12px; overflow-x:hidden;
+  display:flex; flex-direction:column; align-items:center; padding:12px;
   background-image:radial-gradient(rgba(58,46,37,0.035) 1px, transparent 1px);
-  background-size:22px 22px;
+  background-size:22px 22px; overflow-x:hidden;
 }
 #app{width:100%; max-width:640px; display:flex; flex-direction:column; align-items:center;}
 .top{width:100%; display:flex; justify-content:space-between; align-items:center; padding:6px 4px; flex-wrap:wrap; gap:6px;}
@@ -23,228 +23,284 @@ body{
 .top-btns{display:flex; gap:8px;}
 .chip{font:inherit; font-size:1rem; padding:10px 14px; border-radius:999px;
   border:2px solid var(--ink); background:var(--soft); color:var(--ink); cursor:pointer;}
-.chip:focus-visible,.choice:focus-visible,.primary:focus-visible,.ghost:focus-visible,.cell:focus-visible,.pouch:focus-visible{
+.chip:focus-visible,.choice:focus-visible,.primary:focus-visible,.ghost:focus-visible{
   outline:4px solid var(--persimmon); outline-offset:2px;}
 .card{width:100%; background:#FBF6EC; border:2px solid #D8CBB4; border-radius:24px;
   padding:20px 18px 26px; margin-top:8px; box-shadow:0 6px 0 #E2D6C0; position:relative; overflow:hidden;}
-.card.fever{border-color:var(--gold); box-shadow:0 0 0 4px rgba(217,160,43,0.5), 0 6px 0 #E2D6C0;
-  animation:feverglow 0.9s ease infinite;}
-@keyframes feverglow{0%,100%{box-shadow:0 0 0 4px rgba(217,160,43,0.45),0 6px 0 #E2D6C0}
-  50%{box-shadow:0 0 0 9px rgba(217,160,43,0.25),0 6px 0 #E2D6C0}}
 .center{text-align:center; display:flex; flex-direction:column; align-items:center; gap:14px;}
-.h1{font-size:1.9rem; margin:4px 0 0; letter-spacing:0.04em;}
-.sub{font-size:1.15rem; margin:0; color:#6B5A48;}
-.desc{font-size:1.12rem; line-height:1.8; margin:4px 0;}
-.big-emoji{font-size:2.6rem; letter-spacing:0.1em;}
-.primary{font:inherit; font-size:1.35rem; font-weight:700; color:#FFF8EE;
-  background:var(--persimmon); border:none; border-radius:18px; padding:16px 30px;
-  cursor:pointer; min-height:62px; width:100%; max-width:400px; box-shadow:0 5px 0 #8E3B1C;}
+.h1{font-size:2rem; margin:4px 0 0; letter-spacing:0.04em;}
+.sub{font-size:1.2rem; margin:0; color:#6B5A48;}
+.desc{font-size:1.15rem; line-height:1.8; margin:4px 0;}
+.big-emoji{font-size:2.6rem; letter-spacing:0.2em;}
+.primary{font:inherit; font-size:1.4rem; font-weight:700; color:#FFF8EE;
+  background:var(--persimmon); border:none; border-radius:18px; padding:18px 34px;
+  cursor:pointer; min-height:64px; width:100%; max-width:380px; box-shadow:0 5px 0 #8E3B1C;}
 .primary:active{transform:translateY(3px); box-shadow:0 2px 0 #8E3B1C;}
-.ghost{font:inherit; font-size:1.1rem; background:none; border:2px solid var(--ink);
-  border-radius:16px; padding:13px 22px; cursor:pointer; color:var(--ink);
-  min-height:54px; width:100%; max-width:400px;}
-.purse{display:flex; gap:10px; flex-wrap:wrap; justify-content:center; font-size:1.1rem;}
-.purse span{background:var(--soft); border:1.5px solid #CBBDA4; border-radius:999px; padding:8px 16px; font-weight:700;}
-.ladder{width:100%; display:flex; flex-direction:column; gap:8px;}
-.rival{display:flex; align-items:center; gap:12px; background:#FFFDF7; border:2px solid #D8CBB4;
-  border-radius:16px; padding:10px 14px; font-size:1.08rem;}
-.rival.beat{background:var(--soft); border-color:var(--pine);}
-.rival.next{border-color:var(--persimmon); border-width:2.5px; box-shadow:0 3px 0 #E2C5B2;}
-.rival.locked{opacity:0.45;}
-.rival .face{font-size:1.9rem;}
-.rival .who{flex:1; text-align:left;}
-.rival .who b{font-size:1.15rem;}
-.rival .tag{font-size:0.92rem; color:#6B5A48;}
-.rival .st{font-weight:700;}
-.st.win{color:var(--pine);}
-.race{background:#FFFDF7; border:2px solid #CBBDA4; border-radius:16px; padding:10px 12px; margin-bottom:8px; position:relative;}
-.race-row{display:flex; align-items:center; gap:8px; margin:4px 0;}
-.race-row .nm{width:96px; font-size:1rem; font-weight:700; white-space:nowrap; overflow:hidden;}
-.bar{flex:1; height:22px; background:#EDE4D2; border-radius:99px; overflow:hidden;}
-.bar > div{height:100%; border-radius:99px; transition:width 0.4s;}
-.bar .me{background:var(--pine);} .bar .op{background:var(--persimmon);}
-.race-row .pt{width:56px; text-align:right; font-weight:700; font-size:1.05rem;}
-.race-msg{text-align:center; font-weight:700; font-size:1.05rem; min-height:1.5em; color:#6B5A48;}
-.race-msg.lead{color:var(--pine);} .race-msg.behind{color:var(--persimmon);}
-.bubble{text-align:center; min-height:1.9em; margin:2px 0 6px;}
-.bubble span{display:inline-block; background:#FFF; border:2px solid #C8BBA2; border-radius:14px;
-  padding:6px 14px; font-size:1.02rem; animation:pop 0.3s ease;}
-.flash-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; gap:8px;}
-.timer{font-size:1.7rem; font-weight:700; background:var(--ink); color:#F7F0E2;
-  border-radius:14px; padding:5px 16px; min-width:88px; text-align:center;}
-.timer.hurry{background:var(--persimmon); animation:pulse 0.8s ease infinite;}
-@keyframes pulse{0%,100%{transform:scale(1)} 50%{transform:scale(1.07)}}
-.kind{font-size:1.05rem; font-weight:700; background:var(--navy); color:#F1F3F8;
-  padding:7px 14px; border-radius:999px;}
-.kind.fv{background:var(--gold); color:#4A3408;}
-.question{font-size:1.5rem; line-height:1.6; text-align:center; font-weight:700; margin:8px 0 14px; min-height:2.2em;}
-.memo{font-size:2.6rem; letter-spacing:0.25em; text-align:center; font-weight:700; margin:10px 0;
-  background:var(--soft); border-radius:16px; padding:18px 8px;}
-.hanja{font-size:4rem; text-align:center; margin:4px 0 10px; font-weight:700;}
-.choices{display:grid; grid-template-columns:1fr 1fr; gap:11px;}
-.choice{font:inherit; font-size:1.25rem; font-weight:700; min-height:62px;
+.primary.flash-btn{background:#6B5A9E; box-shadow:0 5px 0 #4A3D74;}
+.primary.flash-btn:active{box-shadow:0 2px 0 #4A3D74;}
+.ghost{font:inherit; font-size:1.15rem; background:none; border:2px solid var(--ink);
+  border-radius:16px; padding:14px 24px; cursor:pointer; color:var(--ink);
+  min-height:56px; width:100%; max-width:380px;}
+.village-row{display:flex; gap:10px; font-size:1.3rem; color:#A99B85; margin-top:6px;}
+.v-done{color:var(--pine);}
+.stage-line{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:12px;}
+.badge{background:var(--ink); color:#F7F0E2; padding:8px 14px; border-radius:999px; font-size:1rem;}
+.badge.soft{background:var(--soft); color:var(--ink); border:1.5px solid #CBBDA4;}
+.badge.combo{background:var(--persimmon); color:#FFF3E6; animation:pop 0.35s ease;}
+.badge.goldb{background:var(--gold); color:#4A3408; animation:pop 0.35s ease;}
+@keyframes pop{0%{transform:scale(0.4)} 60%{transform:scale(1.25)} 100%{transform:scale(1)}}
+.stream{position:relative; height:120px; border-radius:18px; overflow:hidden;
+  background:linear-gradient(var(--water), var(--water-deep));
+  border:2px solid #86A096; margin-bottom:14px;}
+.bank{position:absolute; bottom:6px; font-size:2rem;}
+.bank-left{left:6px;} .bank-right{right:6px;}
+.stone{position:absolute; bottom:18px; width:54px; height:34px; margin-left:-27px;
+  background:var(--stone); border-radius:50%; border:2.5px solid #8D8170;
+  box-shadow:0 4px 0 rgba(0,0,0,0.18); display:flex; align-items:center; justify-content:center;
+  transition:background 0.4s;}
+.stone.done{background:#CDC2AE;}
+.stone.now{box-shadow:0 0 0 4px rgba(194,85,43,0.45), 0 4px 0 rgba(0,0,0,0.18);}
+.stone.gold{background:linear-gradient(#F2C75C,#D9A02B); border-color:#A8771B;}
+.stone.gold::after{content:"✨"; position:absolute; top:-22px; font-size:1rem; animation:twinkle 1.2s ease infinite;}
+@keyframes twinkle{0%,100%{opacity:0.5; transform:scale(0.9)} 50%{opacity:1; transform:scale(1.15)}}
+.mark{color:var(--pine); font-weight:700; font-size:1.1rem;}
+.walker{position:absolute; bottom:22px; font-size:2.2rem;}
+.walker.hop{animation:hop 0.6s ease;}
+@keyframes hop{0%{transform:translateY(0)} 40%{transform:translateY(-26px)} 100%{transform:translateY(0)}}
+.ripple{position:absolute; height:3px; border-radius:99px; background:rgba(255,255,255,0.45); animation:flow 6s linear infinite;}
+.r1{width:60px; top:22%; left:-60px;}
+.r2{width:40px; top:55%; left:-40px; animation-delay:2s;}
+.r3{width:50px; top:80%; left:-50px; animation-delay:4s;}
+@keyframes flow{from{transform:translateX(0)} to{transform:translateX(760px)}}
+@media (prefers-reduced-motion: reduce){
+  .ripple{animation:none; left:30%;} .walker.hop{animation:none;}
+  .stone.gold::after{animation:none;} .badge.combo,.badge.goldb{animation:none;}
+}
+.q-count{text-align:center; color:#6B5A48; font-size:1.05rem; margin-bottom:4px;}
+.question{font-size:1.55rem; line-height:1.7; text-align:center; font-weight:700;
+  margin:6px 0 16px; min-height:2.4em;}
+.choices{display:grid; grid-template-columns:1fr; gap:12px;}
+@media (min-width:480px){ .choices{grid-template-columns:1fr 1fr;} }
+.choice{font:inherit; font-size:1.3rem; font-weight:700; min-height:68px;
   border-radius:16px; border:2.5px solid var(--ink); background:#FFFDF7; color:var(--ink);
-  cursor:pointer; padding:10px; line-height:1.4; box-shadow:0 4px 0 #D8CBB4;}
+  cursor:pointer; padding:12px; line-height:1.4; box-shadow:0 4px 0 #D8CBB4;}
 .choice:active{transform:translateY(3px); box-shadow:0 1px 0 #D8CBB4;}
 .choice.wrong{background:#EAE2D3; color:#A2937D; border-color:#BBAE96; box-shadow:none; text-decoration:line-through;}
-.grid{display:grid; gap:7px; margin:4px auto; max-width:420px;}
-.cell{font:inherit; font-weight:700; aspect-ratio:1; border-radius:12px;
-  border:2px solid #C8BBA2; background:#FFFDF7; color:var(--ink); cursor:pointer;
-  display:flex; align-items:center; justify-content:center; padding:0;}
-.cell.bad{background:#EAE2D3; color:#BBAE96;}
+.choice.right{background:var(--pine); color:#F4F8F2; border-color:#37503B;}
+.feedback{margin-top:16px; text-align:center; font-size:1.25rem; min-height:1.8em; color:#6B5A48;}
+.feedback.good{color:var(--pine); font-weight:700;}
+.feedback.bad{color:var(--persimmon); font-weight:700;}
+.stars{font-size:1.6rem; letter-spacing:0.1em;}
+.star-row{display:flex; justify-content:space-between; width:100%; max-width:320px; font-size:1.1rem; padding:3px 0; border-bottom:1px dashed #CBBDA4;}
+.level-up{background:var(--soft); border:1.5px dashed #B49F7E; border-radius:14px; padding:12px 16px; font-size:1.1rem;}
+.final-title{font-size:1.7rem; font-weight:700; color:var(--persimmon);
+  border:2.5px solid var(--persimmon); border-radius:16px; padding:12px 28px;}
+.foot{margin:14px 0 8px; color:#8C7C66; font-size:0.95rem; text-align:center;}
+body.big{font-size:1.15em;}
+/* 점수 풍선 */
 .score-pop{position:absolute; font-weight:700; font-size:1.5rem; color:var(--pine);
   pointer-events:none; animation:rise 1s ease forwards; z-index:5;}
-.score-pop.op{color:var(--persimmon);}
-.score-pop.fv{color:var(--gold); font-size:1.8rem;}
+.score-pop.gold{color:var(--gold);}
 @keyframes rise{0%{opacity:0; transform:translateY(10px) scale(0.7)}
   25%{opacity:1; transform:translateY(-6px) scale(1.2)}
   100%{opacity:0; transform:translateY(-46px) scale(1)}}
-.big-pop{position:fixed; left:50%; top:42%; transform:translate(-50%,-50%);
-  font-weight:700; font-size:2.1rem; color:var(--persimmon); text-align:center;
-  background:rgba(251,246,236,0.94); border:3px solid var(--persimmon); border-radius:22px;
-  padding:16px 28px; z-index:60; pointer-events:none; animation:zoomy 1.4s ease forwards;
-  max-width:88vw;}
-.big-pop.gold{color:#8A6311; border-color:var(--gold);}
-@keyframes zoomy{0%{opacity:0; transform:translate(-50%,-50%) scale(0.3)}
-  18%{opacity:1; transform:translate(-50%,-50%) scale(1.15)}
-  30%{transform:translate(-50%,-50%) scale(1)}
-  80%{opacity:1} 100%{opacity:0; transform:translate(-50%,-50%) scale(1.05)}}
-.cheer{position:fixed; bottom:-40px; font-size:1.9rem; z-index:55; pointer-events:none;
-  animation:cheerup linear forwards;}
-@keyframes cheerup{to{transform:translateY(-78vh) rotate(20deg); opacity:0;}}
+/* 폭죽 */
 .confetti{position:absolute; top:-12px; width:10px; height:14px; border-radius:3px;
   animation:fall linear forwards; z-index:4; pointer-events:none;}
-@keyframes fall{to{transform:translateY(620px) rotate(540deg); opacity:0.2;}}
-.shake{animation:shake 0.3s ease;}
-@keyframes shake{0%,100%{transform:translateX(0)} 25%{transform:translateX(-7px)} 75%{transform:translateX(7px)}}
-@media (prefers-reduced-motion: reduce){
-  .timer.hurry,.card.fever{animation:none;}
-  .cheer{display:none;} .shake{animation:none;}
-}
-.final-title{font-size:1.5rem; font-weight:700; color:var(--persimmon);
-  border:2.5px solid var(--persimmon); border-radius:16px; padding:12px 26px;}
-.brain-age{background:var(--navy); color:#F1F3F8; border-radius:18px; padding:14px 26px; font-size:1.25rem;}
-.brain-age b{font-size:1.9rem; color:#F2C75C;}
-.vs-line{display:flex; align-items:center; justify-content:center; gap:16px; font-size:1.3rem; font-weight:700;}
-.vs-line .face{font-size:2.6rem;}
-.vs{color:var(--persimmon); font-size:1.6rem;}
-.pouches{display:flex; gap:14px; justify-content:center; width:100%;}
-.pouch{font:inherit; font-size:2.6rem; background:#FFFDF7; border:2.5px solid var(--gold);
-  border-radius:18px; padding:14px 10px; cursor:pointer; flex:1; max-width:120px;
-  box-shadow:0 4px 0 #B8861E; display:flex; flex-direction:column; align-items:center; gap:4px;}
-.pouch:active{transform:translateY(3px); box-shadow:0 1px 0 #B8861E;}
-.pouch .amt{font-size:1.15rem; font-weight:700; min-height:1.5em;}
-.pouch.picked{background:var(--gold); color:#4A3408;}
-.pouch.missed{opacity:0.55;}
-.foot{margin:14px 0 8px; color:#8C7C66; font-size:0.95rem; text-align:center;}
-body.big{font-size:1.13em;}
+@keyframes fall{to{transform:translateY(560px) rotate(540deg); opacity:0.2;}}
+/* 번개 모드 */
+.flash-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; gap:8px; flex-wrap:wrap;}
+.timer{font-size:2rem; font-weight:700; background:var(--ink); color:#F7F0E2;
+  border-radius:14px; padding:6px 18px; min-width:96px; text-align:center;}
+.timer.hurry{background:var(--persimmon); animation:pulse 0.8s ease infinite;}
+@keyframes pulse{0%,100%{transform:scale(1)} 50%{transform:scale(1.07)}}
+.flash-score{font-size:1.3rem; font-weight:700;}
+.combo-fire{font-size:1.2rem; font-weight:700; color:var(--persimmon); min-height:1.6em; text-align:center;}
+.record{background:var(--soft); border-radius:14px; padding:10px 20px; font-size:1.15rem;}
 </style>
 </head>
 <body class="big">
 <div id="app">
   <header class="top">
-    <div class="brand">두뇌 장원급제</div>
+    <div class="brand">속담 징검다리</div>
     <div class="top-btns">
       <button class="chip" id="fontBtn">글자 보통 가</button>
       <button class="chip" id="soundBtn">🔔 소리 켬</button>
     </div>
   </header>
   <main class="card" id="main"></main>
-  <footer class="foot">암산 · 기억력 · 한자 · 눈썰미 — 조선 팔도 두뇌 대결</footer>
+  <footer class="foot">눈이 편안한 색으로 만들었습니다 · 속담 100가지 수록</footer>
 </div>
 
 <script>
 "use strict";
-var RIVALS=[
- {name:"옆집 박서방",face:"🧔",tag:"동네 제일 입담꾼",rate:1.1},
- {name:"경로당 김여사",face:"👵",tag:"화투판의 지략가",rate:1.5},
- {name:"서당 훈장님",face:"🧑‍🏫",tag:"회초리의 공포",rate:1.9},
- {name:"고을 이방",face:"🧐",tag:"관아의 꾀주머니",rate:2.3},
- {name:"최진사",face:"🎩",tag:"고을 최고 부자",rate:2.7},
- {name:"암행어사",face:"🕵️",tag:"한양에서 온 수재",rate:3.1},
- {name:"한림학사",face:"👨‍🎓",tag:"궁궐의 천재",rate:3.6},
- {name:"임금님의 스승",face:"👑",tag:"조선 최고 두뇌",rate:4.2}
-];
-var RANKS=["유생","동네 수재","향시 합격","초시 장원","진사 나리","생원 어른","전시 진출","한림학사","🏆 장원급제"];
-var KIND_LABEL={math:"🧮 암산",memory:"🧠 기억력",hanja:"📜 한자",find:"👁 눈썰미"};
-var COMBO_MSG={3:"🔥 3연속!",5:"🔥 5연속! 피버!",8:"🔥🔥 8연속! 천재십니다!",12:"👑 12연속!! 장원감!!"};
-var TAUNT=["허허, 그 실력으로 날 이기겠소?","벌써 지치셨소?","내가 한 수 위구려, 껄껄!","좀 더 분발하셔야겠소!"];
-var PANIC=["아니, 이럴 수가?!","자, 잠깐! 너무 빠르오!","사람이오, 귀신이오?!","크흑, 만만치 않구려!"];
-var FEVER_SHOCK=["부, 불이 붙었잖소?!","저 기세는 대체 뭐요!","이, 이건 반칙 아니오?!"];
+/* ── 문제 자료: 단계별 20개 × 5단계 = 100개 ── */
+var TIERS = [
+[ // 1단계 아주 쉬움
+ {q:"낮말은 새가 듣고 밤말은 ◯가 듣는다",a:"쥐",d:["개","소"]},
+ {q:"원숭이도 ◯◯에서 떨어진다",a:"나무",d:["지붕","사다리"]},
+ {q:"세 살 버릇 ◯◯까지 간다",a:"여든",d:["환갑","일흔"]},
+ {q:"호랑이도 제 ◯ 하면 온다",a:"말",d:["흉","생각"]},
+ {q:"티끌 모아 ◯◯",a:"태산",d:["바다","부자"]},
+ {q:"등잔 밑이 ◯◯◯",a:"어둡다",d:["밝다","좁다"]},
+ {q:"소 잃고 ◯◯◯ 고친다",a:"외양간",d:["대문","지붕"]},
+ {q:"백지장도 맞들면 ◯◯",a:"낫다",d:["무겁다","가볍다"]},
+ {q:"가는 말이 고와야 오는 ◯이 곱다",a:"말",d:["정","복"]},
+ {q:"윗물이 맑아야 ◯◯◯이 맑다",a:"아랫물",d:["강물","샘물"]},
+ {q:"하늘이 무너져도 솟아날 ◯◯이 있다",a:"구멍",d:["다리","계단"]},
+ {q:"누워서 ◯ 먹기",a:"떡",d:["밥","죽"]},
+ {q:"그림의 ◯",a:"떡",d:["밥","꽃"]},
+ {q:"말 한마디에 ◯ ◯ 빚도 갚는다",a:"천 냥",d:["백 냥","만 냥"]},
+ {q:"바늘 도둑이 ◯ 도둑 된다",a:"소",d:["말","개"]},
+ {q:"개구리 ◯◯◯ 적 생각 못 한다",a:"올챙이",d:["송사리","피라미"]},
+ {q:"공든 ◯이 무너지랴",a:"탑",d:["집","담"]},
+ {q:"꼬리가 길면 ◯◯◯",a:"밟힌다",d:["잘린다","들킨다"]},
+ {q:"달걀로 ◯◯ 치기",a:"바위",d:["기둥","장독"]},
+ {q:"고생 끝에 ◯이 온다",a:"낙",d:["복","봄"]}
+],
+[ // 2단계 쉬움
+ {q:"구슬이 서 말이라도 ◯◯◯ 보배",a:"꿰어야",d:["닦아야","모아야"]},
+ {q:"사공이 많으면 배가 ◯으로 간다",a:"산",d:["강","바다"]},
+ {q:"고래 싸움에 ◯◯ 등 터진다",a:"새우",d:["멸치","꽃게"]},
+ {q:"벼는 익을수록 고개를 ◯◯◯",a:"숙인다",d:["든다","돌린다"]},
+ {q:"발 없는 말이 ◯ ◯ 간다",a:"천 리",d:["백 리","십 리"]},
+ {q:"우물 안 ◯◯◯",a:"개구리",d:["붕어","두꺼비"]},
+ {q:"믿는 ◯◯에 발등 찍힌다",a:"도끼",d:["망치","톱"]},
+ {q:"금강산도 ◯◯◯",a:"식후경",d:["구경","등산"]},
+ {q:"닭 쫓던 개 ◯◯ 쳐다본다",a:"지붕",d:["하늘","마당"]},
+ {q:"가재는 ◯ 편",a:"게",d:["새우","물고기"]},
+ {q:"열 번 찍어 안 넘어가는 ◯◯ 없다",a:"나무",d:["기둥","사람"]},
+ {q:"똥 묻은 개가 ◯ 묻은 개 나무란다",a:"겨",d:["흙","물"]},
+ {q:"도토리 키 ◯◯",a:"재기",d:["자랑","겨룸"]},
+ {q:"원님 덕에 ◯◯ 분다",a:"나발",d:["피리","장구"]},
+ {q:"개똥도 약에 쓰려면 ◯◯",a:"없다",d:["많다","썩다"]},
+ {q:"호미로 막을 것을 ◯◯로 막는다",a:"가래",d:["쟁기","멍석"]},
+ {q:"병 주고 ◯ 준다",a:"약",d:["돈","밥"]},
+ {q:"도둑이 제 ◯ 저리다",a:"발",d:["손","몸"]},
+ {q:"쇠뿔도 단김에 ◯◯",a:"빼라",d:["꺾어라","갈아라"]},
+ {q:"산 넘어 ◯",a:"산",d:["강","들"]}
+],
+[ // 3단계 보통
+ {q:"빈 수레가 ◯◯◯◯",a:"요란하다",d:["가볍다","빠르다","조용하다"]},
+ {q:"달면 삼키고 쓰면 ◯◯◯",a:"뱉는다",d:["참는다","마신다","버린다"]},
+ {q:"낫 놓고 ◯◯ 자도 모른다",a:"기역",d:["니은","디귿","시옷"]},
+ {q:"되로 주고 ◯로 받는다",a:"말",d:["홉","섬","되"]},
+ {q:"꿩 대신 ◯",a:"닭",d:["오리","메추리","거위"]},
+ {q:"서당 개 삼 년이면 ◯◯을 읊는다",a:"풍월",d:["천자문","시조","노래"]},
+ {q:"목마른 놈이 ◯◯ 판다",a:"우물",d:["논","밭","강"]},
+ {q:"쇠귀에 ◯ 읽기",a:"경",d:["책","글","시"]},
+ {q:"언 발에 ◯◯ 누기",a:"오줌",d:["물","불","침"]},
+ {q:"밑 빠진 ◯에 물 붓기",a:"독",d:["바가지","솥","냄비"]},
+ {q:"고양이 목에 ◯◯ 달기",a:"방울",d:["리본","단추","구슬"]},
+ {q:"모로 가도 ◯◯만 가면 된다",a:"서울",d:["부산","평양","대구"]},
+ {q:"재주는 곰이 넘고 돈은 ◯◯이 받는다",a:"주인",d:["임자","장수","대감"]},
+ {q:"긁어 ◯◯◯",a:"부스럼",d:["딱지","종기","가려움"]},
+ {q:"핑계 없는 ◯◯ 없다",a:"무덤",d:["사연","잘못","변명"]},
+ {q:"급하면 바늘허리에 ◯ 매어 쓸까",a:"실",d:["줄","끈","천"]},
+ {q:"참새가 ◯◯◯을 그저 지나랴",a:"방앗간",d:["대장간","푸줏간","기와집"]},
+ {q:"종로에서 뺨 맞고 ◯◯에서 눈 흘긴다",a:"한강",d:["남산","시장","골목"]},
+ {q:"호랑이 없는 골에 ◯◯가 왕 노릇 한다",a:"토끼",d:["여우","늑대","살쾡이"]},
+ {q:"닭 소 보듯, 소 ◯ 보듯",a:"닭",d:["개","말","쥐"]}
+],
+[ // 4단계 사자성어
+ {q:"「쓴 것이 다하면 단 것이 온다」\n알맞은 사자성어는?",a:"고진감래",d:["새옹지마","동문서답","작심삼일"]},
+ {q:"「한 가지 일로 두 가지 이익을 얻는다」\n알맞은 사자성어는?",a:"일석이조",d:["일사천리","이심전심","십중팔구"]},
+ {q:"「인생의 좋고 나쁨은 미리 알 수 없다」\n알맞은 사자성어는?",a:"새옹지마",d:["견물생심","살신성인","유유상종"]},
+ {q:"「말하지 않아도 마음이 서로 통한다」\n알맞은 사자성어는?",a:"이심전심",d:["동상이몽","막상막하","유구무언"]},
+ {q:"「둘이 다투는 사이 엉뚱한 이가 이득을 본다」\n알맞은 사자성어는?",a:"어부지리",d:["적반하장","조삼모사","일석이조"]},
+ {q:"「잘못한 사람이 도리어 성을 낸다」\n알맞은 사자성어는?",a:"적반하장",d:["동문서답","자업자득","설상가상"]},
+ {q:"「엎친 데 덮친 격으로 어려움이 겹친다」\n알맞은 사자성어는?",a:"설상가상",d:["금상첨화","천고마비","죽마고우"]},
+ {q:"「미리 준비하면 근심이 없다」\n알맞은 사자성어는?",a:"유비무환",d:["시기상조","과유불급","다다익선"]},
+ {q:"「지나친 것은 모자란 것만 못하다」\n알맞은 사자성어는?",a:"과유불급",d:["다다익선","소탐대실","견원지간"]},
+ {q:"「어릴 적부터 함께 자란 오랜 벗」\n알맞은 사자성어는?",a:"죽마고우",d:["유유상종","백년해로","이심전심"]},
+ {q:"「예사로운 말 속에 깊은 뜻이 들어 있다」\n알맞은 사자성어는?",a:"언중유골",d:["유언비어","횡설수설","감언이설"]},
+ {q:"「처지를 바꾸어 상대방 입장에서 생각한다」\n알맞은 사자성어는?",a:"역지사지",d:["자포자기","반신반의","적재적소"]},
+ {q:"「큰 그릇은 늦게 이루어진다」\n알맞은 사자성어는?",a:"대기만성",d:["입신양명","금의환향","유명무실"]},
+ {q:"「제자가 스승보다 더 낫다」\n알맞은 사자성어는?",a:"청출어람",d:["대기만성","형설지공","주경야독"]},
+ {q:"「온갖 고생을 하며 부지런히 학문을 닦는다」\n알맞은 사자성어는?",a:"형설지공",d:["주마간산","수수방관","어불성설"]},
+ {q:"「잔꾀로 남을 속여 놀린다」\n알맞은 사자성어는?",a:"조삼모사",d:["우왕좌왕","좌충우돌","임기응변"]},
+ {q:"「달리는 말 위에서 산을 보듯 대충 훑어본다」\n알맞은 사자성어는?",a:"주마간산",d:["일취월장","승승장구","오리무중"]},
+ {q:"「안개 속처럼 일의 갈피를 잡을 수 없다」\n알맞은 사자성어는?",a:"오리무중",d:["우유부단","유야무야","동분서주"]},
+ {q:"「나날이 다달이 실력이 자라난다」\n알맞은 사자성어는?",a:"일취월장",d:["주경야독","유비무환","청산유수"]},
+ {q:"「막힘없이 말을 물 흐르듯 잘한다」\n알맞은 사자성어는?",a:"청산유수",d:["어불성설","중언부언","횡설수설"]}
+],
+[ // 5단계 고수
+ {q:"「아무리 큰 일도 작은 시작에서 비롯된다」\n알맞은 속담은?",a:"천 리 길도 한 걸음부터",d:["하늘의 별 따기","누워서 떡 먹기","식은 죽 먹기"]},
+ {q:"「관계없이 한 일이 공교롭게 의심을 산다」\n알맞은 속담은?",a:"까마귀 날자 배 떨어진다",d:["꿩 먹고 알 먹는다","호박이 넝쿨째 굴러온다","남의 떡이 커 보인다"]},
+ {q:"「고생하던 사람에게도 좋은 날이 온다」\n알맞은 속담은?",a:"쥐구멍에도 볕 들 날 있다",d:["소 뒷걸음치다 쥐 잡는다","굼벵이도 구르는 재주가 있다","개구리 올챙이 적 생각 못 한다"]},
+ {q:"「분수에 넘치는 일을 하면 도리어 해를 입는다」\n알맞은 속담은?",a:"뱁새가 황새 따라가면 다리가 찢어진다",d:["우물에서 숭늉 찾는다","빈대 잡으려고 초가삼간 태운다","돌다리도 두들겨 보고 건너라"]},
+ {q:"「아무리 위급해도 정신만 차리면 살 길이 있다」\n알맞은 속담은?",a:"호랑이에게 물려 가도 정신만 차리면 산다",d:["불난 집에 부채질한다","다 된 죽에 코 풀기","우는 아이 젖 준다"]},
+ {q:"「잘못을 저지르고도 모르는 척 시치미를 뗀다」\n알맞은 속담은?",a:"닭 잡아먹고 오리발 내민다",d:["꿩 대신 닭","병 주고 약 준다","도둑이 제 발 저린다"]},
+ {q:"「뜻밖의 큰 행운이 굴러 들어온다」\n알맞은 속담은?",a:"호박이 넝쿨째 굴러떨어진다",d:["남의 떡이 커 보인다","굴러온 돌이 박힌 돌 뺀다","김칫국부터 마신다"]},
+ {q:"「잘될 사람은 어려서부터 남다르다」\n알맞은 속담은?",a:"될성부른 나무는 떡잎부터 알아본다",d:["개천에서 용 난다","콩 심은 데 콩 난다","굽은 나무가 선산을 지킨다"]},
+ {q:"「익숙한 일도 다시 확인하며 조심하라」\n알맞은 속담은?",a:"돌다리도 두들겨 보고 건너라",d:["쇠뿔도 단김에 빼라","시작이 반이다","구르는 돌은 이끼가 안 낀다"]},
+ {q:"「원인이 없으면 결과도 없다」\n알맞은 속담은?",a:"아니 땐 굴뚝에 연기 나랴",d:["수박 겉 핥기","빛 좋은 개살구","불난 집에 부채질한다"]},
+ {q:"「남의 것이 내 것보다 좋아 보인다」\n알맞은 속담은?",a:"남의 떡이 커 보인다",d:["그림의 떡","떡 본 김에 제사 지낸다","굿이나 보고 떡이나 먹어라"]},
+ {q:"「겉만 번지르르하고 실속이 없다」\n알맞은 속담은?",a:"빛 좋은 개살구",d:["우물 안 개구리","번갯불에 콩 구워 먹는다","꿩 대신 닭"]},
+ {q:"「한번 저지른 일은 되돌릴 수 없다」\n알맞은 속담은?",a:"엎질러진 물이다",d:["밑 빠진 독에 물 붓기","언 발에 오줌 누기","고양이에게 생선 맡기기"]},
+ {q:"「작은 것을 잡으려다 큰 손해를 본다」\n알맞은 속담은?",a:"빈대 잡으려고 초가삼간 태운다",d:["언 발에 오줌 누기","긁어 부스럼","혹 떼러 갔다 혹 붙여 온다"]},
+ {q:"「믿지 못할 사람에게 소중한 것을 맡긴다」\n알맞은 속담은?",a:"고양이에게 생선을 맡긴다",d:["호랑이 굴에 들어가야 호랑이를 잡는다","우는 아이 젖 준다","믿는 도끼에 발등 찍힌다"]},
+ {q:"「일의 순서도 모르고 성급하게 덤빈다」\n알맞은 속담은?",a:"우물에서 숭늉 찾는다",d:["감나무 밑에서 홍시 떨어지기를 기다린다","목마른 놈이 우물 판다","천 리 길도 한 걸음부터"]},
+ {q:"「노력은 하지 않고 좋은 결과만 바란다」\n알맞은 속담은?",a:"감나무 밑에 누워 홍시 떨어지기를 기다린다",d:["호박이 넝쿨째 굴러온다","꿩 먹고 알 먹기","도랑 치고 가재 잡는다"]},
+ {q:"「자식 많은 부모는 걱정이 끊일 날이 없다」\n알맞은 속담은?",a:"가지 많은 나무에 바람 잘 날 없다",d:["굽은 나무가 선산을 지킨다","열 손가락 깨물어 안 아픈 손가락 없다","될성부른 나무는 떡잎부터 알아본다"]},
+ {q:"「작은 힘도 꾸준히 하면 큰 일을 이룬다」\n알맞은 속담은?",a:"낙숫물이 댓돌을 뚫는다",d:["시작이 반이다","급할수록 돌아가라","구르는 돌은 이끼가 안 낀다"]},
+ {q:"「몹시 빠르게 일을 해치운다」\n알맞은 속담은?",a:"번갯불에 콩 구워 먹는다",d:["천 리 길도 한 걸음부터","돌다리도 두들겨 보고 건너라","급할수록 돌아가라"]}
+]];
 
-var HANJA=[
- [["火","불 화"],["水","물 수"],["山","메 산"],["木","나무 목"],["人","사람 인"],["日","날 일"],["月","달 월"],["大","큰 대"],["門","문 문"],["王","임금 왕"]],
- [["春","봄 춘"],["秋","가을 추"],["心","마음 심"],["食","먹을 식"],["母","어미 모"],["學","배울 학"],["海","바다 해"],["花","꽃 화"],["風","바람 풍"],["江","강 강"]],
- [["信","믿을 신"],["忠","충성 충"],["孝","효도 효"],["義","옳을 의"],["禮","예도 례"],["智","지혜 지"],["富","부유할 부"],["貴","귀할 귀"],["勇","날랠 용"],["仁","어질 인"]]
-];
-var SIMILAR=[["木","本"],["大","犬"],["土","士"],["日","目"],["人","入"],["王","玉"],["千","干"],["天","夭"]];
+var VILLAGES=["매화마을","개나리마을","진달래마을","민들레마을","모란마을","연꽃마을","코스모스마을","국화마을","단풍마을","소나무마을"];
+var LEVEL_NAME=["아주 쉬움","쉬움","보통","어려움","고수"];
+var TITLES=[[0,"속담 새싹 🌱"],[400,"속담 길손 👣"],[1000,"속담 선비 📜"],[1800,"속담 훈장 🎓"],[2600,"속담 도사 🏆"]];
+var PRAISE=["참 잘하셨습니다!","역시 대단하십니다!","옳지, 바로 그겁니다!","실력이 보통이 아니십니다!","훌륭하십니다!"];
+var COMBO_MSG={2:"🔥 2연속!",3:"🔥 3연속! 불붙었습니다!",4:"🔥 4연속! 멋집니다!",5:"🔥🔥 5연속! 막을 수가 없네요!",7:"🔥🔥 7연속! 동네 챔피언!",10:"🔥🔥🔥 10연속!! 전설입니다!!"};
+var ENCOURAGE=["괜찮습니다, 다시 한번!","천천히 생각해 보세요","거의 다 왔습니다!"];
 
-var S={screen:"home",soundOn:true,wins:0,duel:null,bestAge:null,coins:0,winStreak:0};
+/* ── 상태 ── */
+var S={screen:"home",mode:"journey",stage:0,qIdx:0,score:0,firstTry:0,triedWrong:[],
+  feedback:null,hopping:false,soundOn:true,questions:[],stageStars:[],
+  combo:0,maxCombo:0,goldenIdx:-1,qStart:0,
+  flashScore:0,flashCount:0,flashTime:60,flashBest:0,flashPool:[],flashIdx:0,flashTimer:null};
 var audioCtx=null;
 
-function rnd(n){return Math.floor(Math.random()*n);}
-function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=rnd(i+1);var t=a[i];a[i]=a[j];a[j]=t;}return a;}
-function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
-function pick(arr){return arr[rnd(arr.length)];}
+function shuffle(arr){var a=arr.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function getTitle(){var t=TITLES[0][1];for(var i=0;i<TITLES.length;i++){if(S.score>=TITLES[i][0])t=TITLES[i][1];}return t;}
+function clearedCount(){var n=0;for(var i=0;i<S.stageStars.length;i++){if(S.stageStars[i])n++;}return n;}
 
-/* ── 소리 ── */
-function tone(freqs,vol,dur,gapMs){
+function playTone(good,combo){
   if(!S.soundOn)return;
   try{
     if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();
     if(audioCtx.state==="suspended")audioCtx.resume();
-    for(var i=0;i<freqs.length;i++){
+    var base=1+Math.min(combo||0,8)*0.06; /* 콤보가 쌓이면 음이 점점 높아짐 */
+    var notes=good?[523.25*base,659.25*base,783.99*base]:[220];
+    for(var i=0;i<notes.length;i++){
       var o=audioCtx.createOscillator(),g=audioCtx.createGain();
-      o.type="sine";o.frequency.value=freqs[i];
-      var t0=audioCtx.currentTime+i*(gapMs/1000);
+      o.type="sine";o.frequency.value=notes[i];
+      var t0=audioCtx.currentTime+i*0.1;
       g.gain.setValueAtTime(0.0001,t0);
-      g.gain.exponentialRampToValueAtTime(vol,t0+0.02);
-      g.gain.exponentialRampToValueAtTime(0.0001,t0+dur);
+      g.gain.exponentialRampToValueAtTime(0.18,t0+0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001,t0+0.3);
       o.connect(g);g.connect(audioCtx.destination);
-      o.start(t0);o.stop(t0+dur+0.05);
+      o.start(t0);o.stop(t0+0.35);
     }
   }catch(e){}
 }
-function sndGood(combo){var b=1+Math.min(combo||0,10)*0.05;tone([523*b,659*b,784*b],0.17,0.28,90);}
-function sndBad(){tone([220],0.15,0.3,0);}
-function sndFever(){tone([523,659,784,1046,1318],0.16,0.22,70);}
-function sndTick(){tone([880],0.07,0.06,0);}
-function sndJackpot(){tone([659,784,988,1175,1568],0.18,0.3,90);}
 
 /* ── 효과 ── */
-function scorePop(text,kind){
+function scorePop(text,gold){
   var m=document.getElementById("main");
   var el=document.createElement("div");
-  el.className="score-pop"+(kind==="op"?" op":"")+(kind==="fv"?" fv":"");
+  el.className="score-pop"+(gold?" gold":"");
   el.textContent=text;
-  el.style.left=(kind==="op"?60:15)+Math.random()*15+"%";
-  el.style.top="92px";
+  el.style.left=(30+Math.random()*40)+"%";
+  el.style.top="120px";
   m.appendChild(el);
   setTimeout(function(){el.remove();},1100);
 }
-function bigPop(text,gold){
-  var el=document.createElement("div");
-  el.className="big-pop"+(gold?" gold":"");
-  el.textContent=text;
-  document.body.appendChild(el);
-  setTimeout(function(){el.remove();},1450);
-}
-function cheer(n){
-  var ems=["👏","🎉","😮","🤩","💪","🙌"];
-  for(var i=0;i<n;i++){
-    var c=document.createElement("div");
-    c.className="cheer";
-    c.textContent=pick(ems);
-    c.style.left=(5+Math.random()*90)+"%";
-    c.style.animationDuration=(1.3+Math.random()*1.2)+"s";
-    document.body.appendChild(c);
-    (function(el){setTimeout(function(){el.remove();},2700);})(c);
-  }
-}
 function confetti(){
   var m=document.getElementById("main");
-  var colors=["#C2552B","#4E6B51","#D9A02B","#3E4C6E","#9DBBB2"];
-  for(var i=0;i<44;i++){
+  var colors=["#C2552B","#4E6B51","#D9A02B","#6B5A9E","#9DBBB2"];
+  for(var i=0;i<36;i++){
     var c=document.createElement("div");
     c.className="confetti";
     c.style.left=Math.random()*100+"%";
@@ -255,336 +311,224 @@ function confetti(){
     (function(el){setTimeout(function(){el.remove();},3600);})(c);
   }
 }
-function bubbleSay(text){
-  var b=document.getElementById("bubble");
-  if(b)b.innerHTML='<span>💬 '+esc(text)+'</span>';
-}
 
-/* ── 문제 생성기 ── */
-function near(n,used){
-  var c,deltas=[1,2,3,10,-1,-2,-3,-10,5,-5];
-  for(var k=0;k<30;k++){c=n+deltas[rnd(deltas.length)];if(c>=0&&used.indexOf(c)<0)return c;}
-  return n+11+rnd(9);
-}
-function genMath(lv){
-  var a,b,c,ans,text,t;
-  if(lv<2){a=2+rnd(18);b=2+rnd(18);if(Math.random()<0.5){ans=a+b;text=a+" + "+b;}else{if(a<b){t=a;a=b;b=t;}ans=a-b;text=a+" − "+b;}}
-  else if(lv<4){if(Math.random()<0.45){a=3+rnd(7);b=3+rnd(7);ans=a*b;text=a+" × "+b;}else{a=11+rnd(40);b=11+rnd(40);if(Math.random()<0.5){ans=a+b;text=a+" + "+b;}else{if(a<b){t=a;a=b;b=t;}ans=a-b;text=a+" − "+b;}}}
-  else if(lv<6){if(Math.random()<0.5){a=5+rnd(25);b=5+rnd(25);c=2+rnd(15);ans=a+b-c;text=a+" + "+b+" − "+c;}else{a=4+rnd(9);b=4+rnd(9);c=3+rnd(20);ans=a*b+c;text=a+" × "+b+" + "+c;}}
-  else{if(Math.random()<0.5){a=6+rnd(8);b=6+rnd(8);c=5+rnd(30);ans=a*b-c;text=a+" × "+b+" − "+c;}else{a=25+rnd(60);b=25+rnd(60);c=10+rnd(30);ans=a+b-c;text=a+" + "+b+" − "+c;}}
-  var ch=[ans];while(ch.length<4)ch.push(near(ans,ch));
-  return {type:"math",text:text+" = ?",answer:String(ans),choices:shuffle(ch.map(String))};
-}
-function genMemory(lv){
-  var len=3+Math.floor(lv/2); if(len>7)len=7;
-  var digits="";for(var i=0;i<len;i++)digits+=rnd(10);
-  var ch=[digits];
-  while(ch.length<4){
-    var mm=digits.split("");
-    if(Math.random()<0.5){var p=rnd(len);mm[p]=String((Number(mm[p])+1+rnd(8))%10);}
-    else if(len>1){var p1=rnd(len-1);var t=mm[p1];mm[p1]=mm[p1+1];mm[p1+1]=t;}
-    var s=mm.join("");
-    if(ch.indexOf(s)<0&&s!==digits)ch.push(s);
-  }
-  return {type:"memory",show:digits,showMs:900+260*len,text:"방금 본 숫자는?",answer:digits,choices:shuffle(ch)};
-}
-function genHanja(lv){
-  var tier=lv<3?0:(lv<6?1:2);
-  if(Math.random()<0.3&&tier>0)tier--;
-  var picks=shuffle(HANJA[tier]).slice(0,4);
-  var target=picks[0];
-  return {type:"hanja",hanja:target[0],text:"이 한자의 뜻과 음은?",answer:target[1],choices:shuffle(picks.map(function(p){return p[1];}))};
-}
-function genFind(lv){
-  var n=lv<3?4:(lv<6?5:6);
-  var pair=SIMILAR[rnd(SIMILAR.length)];
-  var flip=Math.random()<0.5;
-  return {type:"find",n:n,common:flip?pair[1]:pair[0],odd:flip?pair[0]:pair[1],
-          oddIdx:rnd(n*n),text:"다른 글자 하나를 찾아 누르세요!"};
-}
-function genQ(lv){
-  var r=Math.random();
-  if(r<0.3)return genMath(lv);
-  if(r<0.55)return genMemory(lv);
-  if(r<0.8)return genHanja(lv);
-  return genFind(lv);
-}
-
-/* ── 대결 진행 ── */
-function multNow(d){
-  var mlt=1;
-  if(d.feverEnd&&Date.now()<d.feverEnd)mlt*=2;
-  if(d.time<=10)mlt*=2;
-  return mlt;
-}
-function startDuel(idx){
-  var d={rival:idx,time:60,me:0,op:0,combo:0,maxCombo:0,correct:0,wrong:0,sumSec:0,
-    q:null,memPhase:false,qStart:0,wrongPicks:[],lead:null,timer:null,memTimeout:null,
-    feverEnd:0,spurtShown:false,pouch:null,coinGain:0};
-  S.duel=d;S.screen="duel";
-  nextQ();render();
-  bubbleSay(pick(["오늘 임자 제대로 만났구려!","어디 한번 덤벼 보시오!","질 생각은 추호도 없소!"]));
-  d.timer=setInterval(function(){
-    if(!S.duel)return;
-    d.time--;
-    if(Math.random()>0.12)d.op+=RIVALS[d.rival].rate*(0.7+Math.random()*0.6);
-    updateRace();
-    var tEl=document.getElementById("timer");
-    if(tEl){tEl.textContent="⏱ "+d.time;if(d.time<=10)tEl.classList.add("hurry");}
-    /* 막판 스퍼트 */
-    if(d.time===10&&!d.spurtShown){
-      d.spurtShown=true;
-      bigPop("⚡ 막판 10초! 모든 점수 2배!",true);
-      sndFever();cheer(6);
-    }
-    if(d.time<=10&&d.time>0)sndTick();
-    /* 피버 종료 표시 갱신 */
-    var card=document.getElementById("main");
-    if(card){
-      if(d.feverEnd&&Date.now()<d.feverEnd)card.classList.add("fever");
-      else card.classList.remove("fever");
-    }
-    /* 간간이 도발 */
-    if(Math.random()<0.07){
-      bubbleSay(d.me>=d.op?pick(PANIC):pick(TAUNT));
-    }
-    if(d.time<=0)endDuel();
-  },1000);
-}
-function nextQ(){
-  var d=S.duel;
-  d.q=genQ(d.rival);
-  d.wrongPicks=[];
-  d.qStart=Date.now();
-  if(d.q.type==="memory"){
-    d.memPhase=true;
-    if(d.memTimeout)clearTimeout(d.memTimeout);
-    var myQ=d.q;
-    d.memTimeout=setTimeout(function(){
-      if(S.duel&&S.duel.q===myQ){S.duel.memPhase=false;S.duel.qStart=Date.now();render();}
-    },d.q.showMs);
-  }else{d.memPhase=false;}
-}
-function award(){
-  var d=S.duel;
-  var sec=(Date.now()-d.qStart)/1000;
-  d.sumSec+=sec;d.correct++;
-  var first=d.wrongPicks.length===0;
-  if(first){d.combo++;if(d.combo>d.maxCombo)d.maxCombo=d.combo;}else d.combo=0;
-  var pts=first?12:6;
-  if(first&&sec<3)pts+=10;else if(first&&sec<6)pts+=5;
-  if(first&&d.combo>=2)pts+=Math.min(d.combo-1,6)*2;
-  var mlt=multNow(d);
-  pts*=mlt;
-  d.me+=pts;
-  sndGood(d.combo);
-  scorePop("+"+pts+(mlt>1?" ×"+mlt+"!":""),mlt>1?"fv":"me");
-  if(COMBO_MSG[d.combo]){bigPop(COMBO_MSG[d.combo],d.combo>=5);cheer(Math.min(d.combo,8));}
-  /* 5연속 → 피버 발동! */
-  if(first&&d.combo===5){
-    d.feverEnd=Date.now()+12000;
-    bigPop("🔥 피버 모드! 12초간 점수 2배!",true);
-    sndFever();cheer(10);
-    bubbleSay(pick(FEVER_SHOCK));
-    var card=document.getElementById("main");
-    if(card)card.classList.add("fever");
-  }
-  nextQ();render();updateRace();
-}
-function punish(){
-  var d=S.duel;
-  d.wrong++;d.combo=0;
-  d.op+=5;
-  sndBad();
-  scorePop("상대 +5","op");
-  var card=document.getElementById("main");
-  if(card){card.classList.add("shake");setTimeout(function(){card.classList.remove("shake");},320);}
-  updateRace();
-}
-function onDuelChoice(v){
-  var d=S.duel;if(!d||d.memPhase)return;
-  if(v===d.q.answer)award();
-  else{if(d.wrongPicks.indexOf(v)<0)d.wrongPicks.push(v);punish();render();}
-}
-function onCell(i){
-  var d=S.duel;if(!d)return;
-  if(i===d.q.oddIdx)award();
-  else{if(d.wrongPicks.indexOf(i)<0)d.wrongPicks.push(i);punish();render();}
-}
-function updateRace(){
-  var d=S.duel;if(!d)return;
-  var me=Math.round(d.me),op=Math.round(d.op);
-  var cap=Math.max(me,op,60)*1.1;
-  var bm=document.getElementById("barMe"),bo=document.getElementById("barOp");
-  var pm=document.getElementById("ptMe"),po=document.getElementById("ptOp");
-  if(bm){bm.style.width=(me/cap*100)+"%";bo.style.width=(op/cap*100)+"%";pm.textContent=me;po.textContent=op;}
-  var msg=document.getElementById("raceMsg");
-  if(msg){
-    var lead=me>=op?"me":"op";
-    if(d.lead&&d.lead!==lead){
-      if(lead==="me"){msg.textContent="🔥 추월! 그대로 달리세요!";msg.className="race-msg lead";sndGood(3);cheer(4);bubbleSay(pick(PANIC));}
-      else{msg.textContent="⚠️ 역전당했습니다! 따라잡으세요!";msg.className="race-msg behind";bubbleSay(pick(TAUNT));}
-    }else{
-      var gap=Math.abs(me-op);
-      msg.textContent=(lead==="me"?"🔥 "+gap+"점 앞서는 중!":"⚠️ "+gap+"점 차 추격 중!");
-      msg.className="race-msg "+(lead==="me"?"lead":"behind");
-    }
-    d.lead=lead;
-  }
-}
-function brainAge(d){
-  var tries=d.correct+d.wrong;
-  var acc=tries>0?d.correct/tries:0;
-  var avg=d.correct>0?d.sumSec/d.correct:9;
-  var age=Math.round(76-acc*32-Math.max(0,7-avg)*3.2);
-  if(age<20)age=20;if(age>80)age=80;
-  return age;
-}
-function endDuel(){
-  var d=S.duel;
-  if(d.timer)clearInterval(d.timer);
-  if(d.memTimeout)clearTimeout(d.memTimeout);
-  d.me=Math.round(d.me);d.op=Math.round(d.op);
-  d.won=d.me>d.op;
-  d.age=brainAge(d);
-  if(S.bestAge===null||d.age<S.bestAge)S.bestAge=d.age;
-  if(d.won){
-    if(d.rival===S.wins)S.wins++;
-    S.winStreak++;
-    /* 승리 보상: 복주머니 3개 준비 */
-    d.pouchVals=shuffle([8+rnd(8),20+rnd(15),55+rnd(45)]);
-  }else{
-    S.winStreak=0;
-    S.coins+=5;d.coinGain=5;
-  }
-  S.screen="result";render();
-  if(d.won)confetti();
-}
-function pickPouch(i){
-  var d=S.duel;
-  if(!d||d.pouch!==null&&d.pouch!==undefined)return;
-  d.pouch=i;
-  var amt=d.pouchVals[i];
-  d.coinGain=amt;S.coins+=amt;
-  var maxV=Math.max.apply(null,d.pouchVals);
-  if(amt===maxV){bigPop("🧧 대박! "+amt+"엽전!",true);sndJackpot();confetti();cheer(8);}
-  else{sndGood(2);}
+/* ── 고향길 모드 ── */
+function startStage(s){
+  var tier=Math.floor(s/2);
+  S.questions=shuffle(TIERS[tier]).slice(0,5).map(function(it){
+    return {q:it.q,a:it.a,choices:shuffle([it.a].concat(it.d))};
+  });
+  S.stage=s;S.qIdx=0;S.firstTry=0;S.triedWrong=[];S.feedback=null;S.hopping=false;
+  S.goldenIdx=Math.floor(Math.random()*5); /* 매번 황금 돌 하나 */
+  S.mode="journey";S.screen="play";S.qStart=Date.now();
   render();
 }
-function quitDuel(){
-  var d=S.duel;
-  if(d){if(d.timer)clearInterval(d.timer);if(d.memTimeout)clearTimeout(d.memTimeout);}
-  S.duel=null;S.screen="home";render();
+
+function onChoice(choice){
+  if(S.hopping||(S.feedback&&S.feedback.type==="good"))return;
+  var cur=S.questions[S.qIdx];
+  if(choice===cur.a){
+    var first=S.triedWrong.length===0;
+    var golden=S.qIdx===S.goldenIdx;
+    var fast=first&&(Date.now()-S.qStart)<6000;
+    var gained=first?20:10;
+    if(first){S.combo++;if(S.combo>S.maxCombo)S.maxCombo=S.combo;}else{S.combo=0;}
+    var comboBonus=first&&S.combo>=2?Math.min((S.combo-1)*5,25):0;
+    var speedBonus=fast?10:0;
+    var total=(gained+comboBonus+speedBonus)*(golden?2:1);
+    S.score+=total;
+    if(first)S.firstTry++;
+    playTone(true,S.combo);
+    var msg=PRAISE[Math.floor(Math.random()*PRAISE.length)];
+    if(COMBO_MSG[S.combo])msg=COMBO_MSG[S.combo];
+    var extra=[];
+    if(fast)extra.push("⚡ 빠른 답");
+    if(golden)extra.push("✨ 황금 돌 2배!");
+    S.feedback={type:"good",msg:msg+"  +"+total+"점"+(extra.length?"  ("+extra.join(" · ")+")":"")};
+    scorePop("+"+total,golden);
+    S.hopping=true;render();
+    setTimeout(function(){
+      S.hopping=false;S.feedback=null;S.triedWrong=[];
+      if(S.qIdx+1<S.questions.length){
+        S.qIdx++;S.qStart=Date.now();render();
+      }else{
+        var stars=S.firstTry===5?3:(S.firstTry>=3?2:1);
+        S.stageStars[S.stage]=stars;
+        S.screen=(S.stage===9)?"final":"clear";
+        render();confetti();
+      }
+    },1000);
+  }else{
+    playTone(false,0);
+    S.combo=0;
+    S.triedWrong.push(choice);
+    S.feedback={type:"bad",msg:ENCOURAGE[Math.floor(Math.random()*ENCOURAGE.length)]};
+    render();
+  }
 }
 
-/* ── 화면 ── */
+/* ── 번개 모드 (60초) ── */
+function startFlash(){
+  var all=[];
+  for(var t=0;t<TIERS.length;t++)all=all.concat(TIERS[t]);
+  S.flashPool=shuffle(all).map(function(it){
+    return {q:it.q,a:it.a,choices:shuffle([it.a].concat(it.d))};
+  });
+  S.flashIdx=0;S.flashScore=0;S.flashCount=0;S.flashTime=60;
+  S.combo=0;S.maxCombo=0;S.triedWrong=[];S.feedback=null;
+  S.mode="flash";S.screen="flash";
+  render();
+  if(S.flashTimer)clearInterval(S.flashTimer);
+  S.flashTimer=setInterval(function(){
+    S.flashTime--;
+    var tEl=document.getElementById("timer");
+    if(tEl){tEl.textContent="⏱ "+S.flashTime;if(S.flashTime<=10)tEl.classList.add("hurry");}
+    if(S.flashTime<=0){
+      clearInterval(S.flashTimer);S.flashTimer=null;
+      if(S.flashScore>S.flashBest)S.flashBest=S.flashScore;
+      S.screen="flashEnd";render();confetti();
+    }
+  },1000);
+}
+
+function onFlashChoice(choice){
+  if(S.screen!=="flash")return;
+  var cur=S.flashPool[S.flashIdx];
+  if(choice===cur.a){
+    S.combo++;if(S.combo>S.maxCombo)S.maxCombo=S.combo;
+    var gained=10+Math.min(S.combo-1,10)*3; /* 콤보가 곧 점수! */
+    S.flashScore+=gained;S.flashCount++;
+    playTone(true,S.combo);
+    scorePop("+"+gained,S.combo>=5);
+    S.triedWrong=[];
+    S.flashIdx=(S.flashIdx+1)%S.flashPool.length;
+    render();
+  }else{
+    playTone(false,0);
+    S.combo=0;
+    S.triedWrong.push(choice);
+    render();
+  }
+}
+
+function quitFlash(){
+  if(S.flashTimer){clearInterval(S.flashTimer);S.flashTimer=null;}
+  S.screen="home";render();
+}
+
+/* ── 화면 그리기 ── */
+function streamHTML(pos,hop){
+  var h='<div class="stream" aria-hidden="true"><div class="bank bank-left">🌳</div><div class="bank bank-right">🏡</div>';
+  for(var i=0;i<5;i++){
+    var cls="stone"+(i<pos?" done":"")+(i===pos?" now":"")+(i===S.goldenIdx?" gold":"");
+    h+='<div class="'+cls+'" style="left:'+(14+i*16)+'%">';
+    if(i===pos)h+='<div class="walker'+(hop?" hop":"")+'">🧓</div>';
+    if(i<pos)h+='<span class="mark">✔</span>';
+    h+='</div>';
+  }
+  h+='<div class="ripple r1"></div><div class="ripple r2"></div><div class="ripple r3"></div></div>';
+  return h;
+}
+function choicesHTML(cur,handler,goodLocked){
+  var h='<div class="choices">';
+  for(var c=0;c<cur.choices.length;c++){
+    var ch=cur.choices[c];
+    var wrong=S.triedWrong.indexOf(ch)>=0;
+    var right=goodLocked&&ch===cur.a;
+    h+='<button class="choice'+(wrong?" wrong":"")+(right?" right":"")+'"'+
+       ((wrong||goodLocked)?" disabled":"")+
+       ' onclick="'+handler+'(this.dataset.v)" data-v="'+esc(ch)+'">'+esc(ch)+'</button>';
+  }
+  return h+'</div>';
+}
+
 function render(){
   var m=document.getElementById("main");
   var h="";
   if(S.screen==="home"){
     m.className="card center";
-    h+='<div class="big-emoji">🏯</div><h1 class="h1">두뇌 장원급제</h1>'+
-       '<div class="purse"><span>신분: '+RANKS[S.wins]+'</span><span>🪙 '+S.coins+'엽전</span>'+
-       (S.winStreak>=2?'<span>🔥 '+S.winStreak+'연승 중!</span>':'')+
-       (S.bestAge!==null?'<span>🧠 최고 두뇌 나이 '+S.bestAge+'세</span>':'')+'</div>'+
-       '<p class="desc">암산·기억력·한자·눈썰미 — 60초 실시간 점수 대결!<br>5연속 정답이면 🔥<b>피버 모드</b>(점수 2배),<br>마지막 10초는 ⚡<b>막판 스퍼트</b>(또 2배)!<br>이기면 🧧복주머니에서 엽전을 뽑습니다.</p>'+
-       '<div class="ladder">';
-    for(var i=0;i<RIVALS.length;i++){
-      var r=RIVALS[i];
-      var st=i<S.wins?"beat":(i===S.wins?"next":"locked");
-      h+='<div class="rival '+st+'">'+
-         '<span class="face">'+r.face+'</span>'+
-         '<span class="who"><b>'+r.name+'</b><br><span class="tag">'+r.tag+'</span></span>';
-      if(st==="beat")h+='<span class="st win">승리 ✔</span>';
-      else if(st==="next")h+='<button class="primary" style="width:auto; min-height:48px; padding:10px 18px; font-size:1.1rem;" onclick="startDuel('+i+')">⚔️ 도전!</button>';
-      else h+='<span class="st">🔒</span>';
-      h+='</div>';
+    h+='<div class="big-emoji">🪨🪨🪨</div><h1 class="h1">속담 징검다리</h1>'+
+       '<p class="sub">속담 100가지 · 두 가지 놀이</p>'+
+       '<p class="desc">🚶 <b>고향길</b> — 열 개 마을을 차근차근<br>⚡ <b>번개 모드</b> — 60초 동안 최대한 많이!<br>연속으로 맞히면 🔥콤보 점수가 쌓입니다</p>'+
+       '<button class="primary" onclick="startStage(0)">🚶 고향길 떠나기</button>';
+    if(clearedCount()>0){
+      var next=Math.min(clearedCount(),9);
+      h+='<button class="ghost" onclick="startStage('+next+')">이어서 하기 ('+(next+1)+'번째 마을부터)</button>';
     }
+    h+='<button class="primary flash-btn" onclick="startFlash()">⚡ 번개 모드 (60초 도전)</button>';
+    if(S.flashBest>0)h+='<div class="record">⚡ 오늘의 최고 기록: <b>'+S.flashBest+'점</b></div>';
+    h+='<div class="village-row">';
+    for(var i=0;i<10;i++){h+='<span class="'+(S.stageStars[i]?"v-done":"")+'">'+(S.stageStars[i]?"●":"○")+'</span>';}
     h+='</div>';
-    if(S.wins>=8)h+='<div class="final-title">🏆 장원급제 달성! 조선 최고 두뇌!</div>'+
-      '<button class="ghost" onclick="resetAll()">처음 신분부터 다시 도전</button>';
-    if(S.wins>0&&S.wins<8)h+='<button class="ghost" onclick="startDuel('+(S.wins-1)+')">지난 상대와 다시 겨루기 (엽전 벌이)</button>';
   }
-  else if(S.screen==="duel"){
-    var d=S.duel,r=RIVALS[d.rival],q=d.q;
-    var fever=d.feverEnd&&Date.now()<d.feverEnd;
-    m.className="card"+(fever?" fever":"");
-    h+='<div class="flash-head">'+
-       '<div class="timer'+(d.time<=10?" hurry":"")+'" id="timer">⏱ '+d.time+'</div>'+
-       '<div class="kind'+(fever?" fv":"")+'">'+(fever?"🔥 피버 ×2":KIND_LABEL[q.type])+'</div></div>'+
-       '<div class="race">'+
-       '<div class="race-row"><span class="nm">🧓 나</span><div class="bar"><div class="me" id="barMe" style="width:0%"></div></div><span class="pt" id="ptMe">'+Math.round(d.me)+'</span></div>'+
-       '<div class="race-row"><span class="nm">'+r.face+' '+esc(r.name)+'</span><div class="bar"><div class="op" id="barOp" style="width:0%"></div></div><span class="pt" id="ptOp">'+Math.round(d.op)+'</span></div>'+
-       '<div class="race-msg" id="raceMsg"></div></div>'+
-       '<div class="bubble" id="bubble"></div>';
-    if(q.type==="memory"&&d.memPhase){
-      h+='<p class="question">잘 외워 두세요!</p><div class="memo">'+q.show+'</div>';
-    }else if(q.type==="find"){
-      h+='<p class="question">'+q.text+'</p><div class="grid" style="grid-template-columns:repeat('+q.n+',1fr)">';
-      var fs=q.n<=4?"1.7rem":(q.n===5?"1.45rem":"1.2rem");
-      for(var c=0;c<q.n*q.n;c++){
-        var bad=d.wrongPicks.indexOf(c)>=0;
-        h+='<button class="cell'+(bad?" bad":"")+'" style="font-size:'+fs+'"'+(bad?" disabled":"")+
-           ' onclick="onCell('+c+')">'+(c===q.oddIdx?q.odd:q.common)+'</button>';
-      }
-      h+='</div>';
-    }else{
-      if(q.type==="hanja")h+='<div class="hanja">'+q.hanja+'</div>';
-      h+='<p class="question">'+esc(q.text)+'</p><div class="choices">';
-      for(var k=0;k<q.choices.length;k++){
-        var ch=q.choices[k];
-        var w=d.wrongPicks.indexOf(ch)>=0;
-        h+='<button class="choice'+(w?" wrong":"")+'"'+(w?" disabled":"")+
-           ' onclick="onDuelChoice(this.dataset.v)" data-v="'+esc(ch)+'">'+esc(ch)+'</button>';
-      }
-      h+='</div>';
-    }
-    h+='<div style="margin-top:14px; text-align:center;"><button class="ghost" style="max-width:200px; min-height:44px; font-size:0.95rem;" onclick="quitDuel()">기권하기</button></div>';
+  else if(S.screen==="play"){
+    m.className="card";
+    var cur=S.questions[S.qIdx];
+    var pos=S.qIdx+(S.hopping?1:0);
+    h+='<div class="stage-line"><span class="badge">'+(S.stage+1)+'번째 마을 · '+VILLAGES[S.stage]+'</span>'+
+       '<span class="badge soft">난이도: '+LEVEL_NAME[Math.floor(S.stage/2)]+'</span>'+
+       '<span class="badge soft">점수 '+S.score+'</span>'+
+       (S.combo>=2?'<span class="badge combo">🔥 '+S.combo+'연속</span>':'')+
+       (S.qIdx===S.goldenIdx?'<span class="badge goldb">✨ 황금 돌! 점수 2배</span>':'')+
+       '</div>'+
+       streamHTML(pos,S.hopping)+
+       '<div class="q-count">'+(S.qIdx+1)+' / 5 번째 돌 · 6초 안에 맞히면 ⚡보너스</div>'+
+       '<p class="question">'+esc(cur.q).replace(/\n/g,"<br>")+'</p>'+
+       choicesHTML(cur,"onChoice",S.feedback&&S.feedback.type==="good")+
+       '<div class="feedback '+(S.feedback?S.feedback.type:"")+'" role="status" aria-live="polite">'+
+       (S.feedback?esc(S.feedback.msg):"알맞은 답을 골라 주세요")+'</div>';
   }
-  else if(S.screen==="result"){
+  else if(S.screen==="clear"){
     m.className="card center";
-    var d2=S.duel,r2=RIVALS[d2.rival];
-    var gap=Math.abs(d2.me-d2.op);
-    h+='<div class="vs-line"><span class="face">🧓</span><span class="vs">'+d2.me+' : '+d2.op+'</span><span class="face">'+r2.face+'</span></div>';
-    if(d2.won){
-      h+='<div class="big-emoji">🎉</div><h1 class="h1">'+esc(r2.name)+' 격파!</h1>'+
-         '<p class="desc"><b>'+gap+'점 차</b> 승리!'+(S.winStreak>=2?' <b>🔥'+S.winStreak+'연승!</b>':'')+
-         (d2.rival+1<8&&d2.rival===S.wins-1?'<br>신분이 <b>'+RANKS[S.wins]+'</b>(으)로 올랐습니다!':'')+'</p>';
-      /* 복주머니 뽑기 */
-      if(d2.pouch===null||d2.pouch===undefined){
-        h+='<p class="desc"><b>🧧 승리 보상!</b> 복주머니 하나를 고르세요<br><span style="font-size:0.95rem; color:#6B5A48;">어딘가에 대박 엽전이 숨어 있습니다...</span></p>'+
-           '<div class="pouches">';
-        for(var p=0;p<3;p++)h+='<button class="pouch" onclick="pickPouch('+p+')">🧧<span class="amt">?</span></button>';
-        h+='</div>';
-      }else{
-        h+='<div class="pouches">';
-        for(var p2=0;p2<3;p2++){
-          var cls=p2===d2.pouch?"picked":"missed";
-          h+='<div class="pouch '+cls+'">🧧<span class="amt">'+d2.pouchVals[p2]+'엽전</span></div>';
-        }
-        h+='</div>';
-        var maxV=Math.max.apply(null,d2.pouchVals);
-        h+='<p class="desc">🪙 <b>+'+d2.coinGain+'엽전</b> 획득! (보유 '+S.coins+'엽전)'+
-           (d2.coinGain<maxV?'<br><span style="color:#A2937D;">아깝다! 옆 주머니엔 '+maxV+'엽전이...</span>':'<br><b style="color:var(--gold);">최고 주머니를 골랐습니다! 🏅</b>')+'</p>';
-        h+='<div class="brain-age">오늘의 두뇌 나이 <b>'+d2.age+'세</b>'+(S.bestAge===d2.age?' 🏅':'')+'</div>';
-        if(S.wins>=8)h+='<div class="final-title">🏆 장원급제! 조선 팔도 최고 두뇌!</div>'+
-          '<button class="primary" onclick="quitDuel()">금의환향 (처음 화면)</button>';
-        else h+='<button class="primary" onclick="startDuel('+S.wins+')">⚔️ 다음 상대: '+RIVALS[S.wins].face+' '+esc(RIVALS[S.wins].name)+'</button>'+
-          '<button class="ghost" onclick="quitDuel()">잠시 쉬기</button>';
-      }
-    }else{
-      h+='<div class="big-emoji">😤</div><h1 class="h1">'+(gap<=15?'아아, 딱 '+gap+'점 차!':esc(r2.name)+'의 승리...')+'</h1>'+
-         '<p class="desc">맞힌 수 <b>'+d2.correct+'개</b> · 최고 <b>🔥'+d2.maxCombo+'연속</b><br>'+
-         '위로 엽전 <b>+5</b> 🪙 (보유 '+S.coins+'엽전)<br><b>이대로 물러나실 겁니까?</b></p>'+
-         '<div class="brain-age">오늘의 두뇌 나이 <b>'+d2.age+'세</b></div>'+
-         '<button class="primary" onclick="startDuel('+d2.rival+')">⚔️ 설욕전! 다시 붙기</button>'+
-         '<button class="ghost" onclick="quitDuel()">처음 화면으로</button>';
+    var lvNow=Math.floor(S.stage/2),lvNext=Math.floor((S.stage+1)/2);
+    h+='<div class="big-emoji">🎉</div><h1 class="h1">'+VILLAGES[S.stage]+' 도착!</h1>'+
+       '<div class="stars">'+"⭐".repeat(S.stageStars[S.stage]||1)+'</div>'+
+       '<p class="desc">다섯 돌 중 <b>'+S.firstTry+'개</b>를 한 번에 맞히셨습니다.<br>'+
+       '최고 연속 기록 <b>🔥'+S.maxCombo+'연속</b><br>'+
+       '지금까지 점수 <b>'+S.score+'점</b> · 현재 칭호 <b>'+getTitle()+'</b></p>';
+    if(lvNext>lvNow&&S.stage<9){
+      h+='<p class="level-up">다음 마을부터는 「'+LEVEL_NAME[lvNext]+'」 단계입니다. 힘내세요!</p>';
     }
+    h+='<button class="primary" onclick="startStage('+(S.stage+1)+')">다음 마을로 🚶</button>'+
+       '<button class="ghost" onclick="startStage('+S.stage+')">이 마을 다시 건너기</button>';
+  }
+  else if(S.screen==="final"){
+    m.className="card center";
+    h+='<div class="big-emoji">🏡🎊</div><h1 class="h1">고향에 도착하셨습니다!</h1>'+
+       '<p class="desc">열 개 마을을 모두 건너셨습니다.<br>최종 점수 <b>'+S.score+'점</b> · 최고 <b>🔥'+S.maxCombo+'연속</b></p>'+
+       '<div class="final-title">'+getTitle()+'</div><div class="stars">';
+    for(var v=0;v<10;v++){
+      h+='<div class="star-row"><span>'+VILLAGES[v]+'</span><span>'+"⭐".repeat(S.stageStars[v]||1)+'</span></div>';
+    }
+    h+='</div><button class="primary" onclick="restartAll()">처음부터 다시 걷기</button>'+
+       '<button class="primary flash-btn" onclick="startFlash()">⚡ 번개 모드 도전!</button>';
+  }
+  else if(S.screen==="flash"){
+    m.className="card";
+    var fc=S.flashPool[S.flashIdx];
+    h+='<div class="flash-head">'+
+       '<div class="timer'+(S.flashTime<=10?" hurry":"")+'" id="timer">⏱ '+S.flashTime+'</div>'+
+       '<div class="flash-score">점수 '+S.flashScore+' · 맞힌 수 '+S.flashCount+'</div>'+
+       '</div>'+
+       '<div class="combo-fire">'+(S.combo>=2?"🔥".repeat(Math.min(Math.floor(S.combo/2)+1,5))+" "+S.combo+"연속! 콤보 점수 상승 중!":"연속으로 맞히면 점수가 점점 커집니다")+'</div>'+
+       '<p class="question">'+esc(fc.q).replace(/\n/g,"<br>")+'</p>'+
+       choicesHTML(fc,"onFlashChoice",false)+
+       '<div style="margin-top:18px; text-align:center;"><button class="ghost" style="max-width:240px; min-height:48px; font-size:1rem;" onclick="quitFlash()">그만하기</button></div>';
+  }
+  else if(S.screen==="flashEnd"){
+    m.className="card center";
+    var isBest=S.flashScore>=S.flashBest&&S.flashScore>0;
+    h+='<div class="big-emoji">⚡🎊</div><h1 class="h1">60초 종료!</h1>'+
+       (isBest?'<p class="level-up">🏅 오늘의 최고 기록 달성!</p>':'')+
+       '<p class="desc"><b>'+S.flashCount+'문제</b>를 맞혀 <b>'+S.flashScore+'점</b>!<br>'+
+       '최고 연속 <b>🔥'+S.maxCombo+'연속</b> · 오늘 최고 기록 <b>'+S.flashBest+'점</b></p>'+
+       '<button class="primary flash-btn" onclick="startFlash()">⚡ 한 번 더! 기록 깨기</button>'+
+       '<button class="ghost" onclick="quitFlash()">처음 화면으로</button>';
   }
   m.innerHTML=h;
-  if(S.screen==="duel")updateRace();
 }
-function resetAll(){S.wins=0;S.bestAge=null;S.winStreak=0;render();}
+
+function restartAll(){S.score=0;S.stageStars=[];S.maxCombo=0;startStage(0);}
 
 document.getElementById("fontBtn").addEventListener("click",function(){
   document.body.classList.toggle("big");
@@ -594,6 +538,7 @@ document.getElementById("soundBtn").addEventListener("click",function(){
   S.soundOn=!S.soundOn;
   this.textContent=S.soundOn?"🔔 소리 켬":"🔕 소리 끔";
 });
+
 render();
 </script>
 </body>
